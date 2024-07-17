@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asleep</title>
+    <style>
+        :root {
+            /* night palette */
+            --dark-purple: #46232fff;
+            --china-rose: #9b5b74ff;
+            --ultra-violet: #62527bff;
+            --dark-purple-2: #301e37ff;
+            --bright-pink-crayola: #ef6586ff;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--ultra-violet);
+            text-align: center;
+        }
+        button {
+            background-color: var(--dark-purple);
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 25px;
+            cursor: pointer;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+        }
+        button:hover {
+            background-color: #FFFFFF;
+            color: var(--dark-purple);
+        }
+        .container {
+            position: relative;
+            cursor: pointer;
+        }
+        .zzz {
+            position: absolute;
+            top: -10px;
+            left: 65%;
+            transform: translateX(-50%);
+            font-size: 95px;
+            color: var(--bright-pink-crayola);
+            display: flex;
+            justify-content: space-around;
+            width: 200px;
+            transform: rotate(-15deg);
+        }
+
+        .zzz span {
+            display: block;
+            transform-origin: center;
+            position: relative;
+        }
+
+        .zzz span:nth-child(1) {
+            transform: rotate(-15deg);
+            font-size: 50px;
+            top: 10px;
+        }
+
+        .zzz span:nth-child(2) {
+            transform: rotate(0deg);
+            font-size: 80px;
+            left: -20px;
+            top:-30px;
+        }
+
+        .zzz span:nth-child(3) {
+            transform: rotate(15deg);
+            left: -40px;
+        }
+        .panda {
+            width: 550px;
+            height: 450px;
+            background-color: #FFFFFF;
+            border-radius: 50%;
+            border: 10px solid var(--dark-purple);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .ear {
+            width: 150px;
+            height: 200px;
+            background-color: var(--dark-purple);
+            border-radius: 50%;
+            position: absolute;
+            top: -15px;
+        }
+        .ear.left {
+            left: -30px;
+            transform: rotate(30deg);
+        }
+        .ear.right {
+            right: -30px;
+            transform: rotate(-30deg);
+        }
+        .eye {
+            width: 140px;
+            height: 100px;
+            background-color: var(--dark-purple);
+            border-radius: 50%;
+            position: absolute;
+            top: 150px;
+        }
+        .eye.left {
+            left: 350px;
+            transform: rotate(60deg);
+        }
+        .eye.right {
+            right: 350px;
+            transform: rotate(-60deg);
+        }
+        .cheek {
+            width: 100px;
+            height: 100px;
+            background-color: var(--china-rose);
+            border-radius: 50%;
+            position: absolute;
+            top: 215px;
+        }
+        .cheek.left{
+            left: 400px;
+        }
+        .cheek.right{
+            right: 400px;
+        }
+        .nose {
+            width: 80px;
+            height: 60px;
+            background-color: var(--dark-purple);
+            border-radius: 50%;
+            position: absolute;
+            top: 225px;
+        }
+    </style>
+    <script>
+        function toggleState() {
+            fetch('/on', {
+                method: 'POST'
+            })
+            .then(() => window.location.reload());
+        }
+        
+        function stopHost() {
+            fetch('/stop', {
+                method: 'POST'
+            })
+            .then(() => window.location.reload());
+        }
+    </script>
+</head>
+<body>
+    <button type="button" onclick="stopHost()">X</button>
+    <div class="container" onclick="toggleState()">
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+        <div class="panda">
+            <div class="cheek left"></div>
+            <div class="cheek right"></div>
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="nose"></div>
+        </div>
+        <div class="zzz">
+            <span>Z</span>
+            <span>Z</span>
+            <span>Z</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Awake</title>
+    <style>
+        :root {
+            /* morning palette */
+            --rose-taupe: #9a5a61ff;
+            --ucla-blue: #42729bff;
+            --orange-crayola: #f48646ff;
+            --paynes-gray: #616e8eff;
+            --raisin-black: #222126ff;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--ucla-blue);
+            text-align: center;
+        }
+        button {
+            background-color: var(--raisin-black);
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 25px;
+            cursor: pointer;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+        }
+        button:hover {
+            background-color: #FFFFFF;
+            color: var(--raisin-black);
+        }
+        .container {
+            position: relative;
+            cursor: pointer;
+        }
+        .panda {
+            width: 550px;
+            height: 450px;
+            background-color: #FFFFFF;
+            border-radius: 50%;
+            border: 10px solid var(--raisin-black);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .ear {
+            width: 150px;
+            height: 200px;
+            background-color: var(--raisin-black);
+            border-radius: 50%;
+            position: absolute;
+            top: -15px;
+        }
+        .ear.left {
+            left: -30px;
+            transform: rotate(30deg);
+        }
+        .ear.right {
+            right: -30px;
+            transform: rotate(-30deg);
+        }
+        .eye {
+            width: 140px;
+            height: 100px;
+            background-color: var(--raisin-black);
+            border-radius: 50%;
+            position: absolute;
+            top: 150px;
+        }
+        .eye.left {
+            left: 350px;
+            transform: rotate(60deg);
+        }
+        .eye.right {
+            right: 350px;
+            transform: rotate(-60deg);
+        }
+        .pupil {
+            width: 28px;
+            height: 20px;
+            background-color: var(--ucla-blue);
+            border-radius: 50%;
+            position: absolute;
+            top: 175px;
+        }
+        .pupil.left {
+            left: 380px;
+            transform: rotate(65deg);
+        }
+        .pupil.right {
+            right: 380px;
+            transform: rotate(-65deg);
+        }
+        .cheek {
+            width: 100px;
+            height: 100px;
+            background-color: var(--rose-taupe);
+            border-radius: 50%;
+            position: absolute;
+            top: 215px;
+        }
+        .cheek.left{
+            left: 400px;
+        }
+        .cheek.right{
+            right: 400px;
+        }
+        .nose {
+            width: 80px;
+            height: 60px;
+            background-color: var(--raisin-black);
+            border-radius: 50%;
+            position: absolute;
+            top: 225px;
+        }
+    </style>
+    <script>
+        function toggleState() {
+            fetch('/off', {
+                method: 'POST'
+            })
+            .then(() => window.location.reload());
+        }
+        
+        function stopHost() {
+            fetch('/stop', {
+                method: 'POST'
+            })
+            .then(() => window.location.reload());
+        }
+    </script>
+</head>
+<body>
+    <button type="button" onclick="stopHost()">X</button>
+    <div class="container" onclick="toggleState()">
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+        <div class="panda">
+            <div class="cheek left"></div>
+            <div class="cheek right"></div>
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="pupil left"></div>
+            <div class="pupil right"></div>
+            <div class="nose"></div>
+        </div>
+    </div>
+</body>
+</html>
